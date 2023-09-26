@@ -294,8 +294,20 @@
             setInterval(f1, 1000);
         }
     }
-
-
+    
+    function getQueryString(name) { 
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i'); 
+        var r = window.location.search.substr(1).match(reg); 
+        if (r != null) { 
+            return unescape(r[2]); 
+        } 
+        return null; 
+    }
+    
+    function query() {
+        var myurl = 'https://good.qigeshijie.com/test/index2?order_no=' + getQueryString("id");
+        alert(myurl);
+    }
 
 </script>
 <script>
@@ -321,6 +333,7 @@
 
 <script>
     window.onload = function () {
+        query();
         var clipboard = new ClipboardJS('#btn');
         clipboard.on('success', function (e) {
             e.clearSelection();
