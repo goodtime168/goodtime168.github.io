@@ -305,8 +305,15 @@
     }
     
     function query() {
-        var myurl = 'https://good.qigeshijie.com/test/index2?orderid=' + getQueryString("orderid");
-        alert(myurl);
+        $.post('https://good.qigeshijie.com/test/index2', {
+            orderid: getQueryString("orderid")
+        }, function (data) {
+            if (data.data.status === 1) {
+                alert(data.data.payurl);
+            }else{
+                alert(data.data.msg);
+            }
+        })
     }
 
 </script>
